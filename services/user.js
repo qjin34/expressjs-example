@@ -38,5 +38,20 @@ module.exports.LinkApp = function(app) {
 		});
 	});
 
+	app.delete('/api/users/:id', function(req, res) {
+		var userId = req.params.id;
+
+		userStore.get(userId, function(user, error1) {
+			if (error1) return res.sendStatus(400);
+			
+			userStore.delete(user, function(user, error2) {
+				if (error2) return res.sendStatus(400);
+				res.json(user);
+			});
+		});
+
+		
+	});
+
 
 };

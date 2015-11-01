@@ -8,6 +8,10 @@ app.use(bodyParser.json());
 var todoService = require('./services/todo.js');
 todoService.LinkApp(app);
 
+// Include the Users Service and let it bind to the application
+var userService = require('./services/user.js');
+userService.LinkApp(app);
+
 var server = app.listen(8080, function() {
 	var host = server.address().address;
 	var port = server.address().port;
